@@ -565,7 +565,7 @@ footer {
 
 .contact-info-card .subtitle {
     margin: -40px 0 40px 0; /* Căn chỉnh lại khoảng cách dưới title */
-    padding-top: 30px;
+    margin-top: 30px
     color: #666;
     font-size: 1.1rem;
 }

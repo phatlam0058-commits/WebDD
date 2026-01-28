@@ -1,0 +1,84 @@
+/* --- Responsive Design for Marina Travel --- */
+
+/* Tablet & Smaller Devices (max-width: 992px) */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr; /* Stack contact info and form vertically */
+        gap: 30px;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    
+    /* Navigation Adjustments */
+    .nav-links {
+        display: none; /* We hide the links to show a mobile menu via JS later */
+        flex-direction: column;
+        width: 100%;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.nav-active {
+        display: flex; /* This will be toggled by main.js */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    /* Hero Text Scaling */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+    }
+
+    /* Section Spacing */
+    section {
+        padding: 50px 0;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    /* Grid Adjustments */
+    .feature-grid, .services-grid {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+
+    /* Footer Adjustments */
+    .footer-content {
+        padding: 0 20px;
+    }
+}
+
+/* Extra Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+}

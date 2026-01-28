@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Adventure Game - Marina Travel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="game-page-layout">
+
+    <header class="game-header-nav">
+        <nav class="navbar">
+            <div class="logo">Marina <span>Travel</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="game.html" class="active">Sea Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="game-main-content">
+        <section class="game-container" id="game-box">
+            
+            <div id="start-screen">
+                <h2 class="title-gradient">Ready to dive in?</h2>
+                <p>Answer 5 questions about the sea and Marina Travel destinations to prove you're a true explorer.</p>
+                <button id="start-btn" class="main-btn">Start Adventure</button>
+            </div>
+
+            <div id="quiz-screen" class="hidden">
+                <div class="quiz-info">
+                    <h2 class="title-gradient">SEA EXPLORER CHALLENGE</h2>
+                    <div class="progress-wrapper">
+                        <span id="question-number">QUESTION 1/5</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-body">
+                    <div class="character-box">
+                        <span class="mascot-animation">🐙</span>
+                    </div>
+                    <div id="question-text"></div>
+                    <div id="answer-buttons" class="btn-grid"></div>
+                </div>
+                
+                <div id="score-display">Score: 0</div>
+            </div>
+
+            <div id="result-screen" class="hidden">
+                <h2 class="title-gradient">MISSION ACCOMPLISHED</h2>
+                <p id="final-score-text"></p>
+                <div class="result-footer">
+                    <button id="restart-btn" class="main-btn">PLAY AGAIN</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="game-footer">
+        <div class="container footer-flex">
+            <div class="footer-left">
+                <h3>About Us</h3>
+                <p><strong>MARINA TRAVEL CO., LTD</strong></p>
+                <p>Address: 115B Tran Phu St, Ward 5, Vung Tau City</p>
+                <p>Tel: 0933.368.485</p>
+            </div>
+            <div class="footer-right">
+                <h3>NEED HELP?</h3>
+                <p>Hotline: 0933.368.485</p>
+                <p>Operating Hours: 6:00 AM – 6:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Marina Travel.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/game.js"></script>
+</body>
+</html>

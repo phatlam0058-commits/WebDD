@@ -1,0 +1,726 @@
+/* --- Root Variables for Brand Consistency --- */
+:root {
+    --primary-blue: #003366;
+    --secondary-blue: #0077be;
+    --accent-coral: #ff7f50;
+    --light-bg: #f4f9ff;
+    --white: #ffffff;
+    --dark-text: #333333;
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
+}
+
+/* --- Layout Containers --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation --- */
+header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--accent-coral);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-coral);
+}
+
+/* =============================================
+    ABOUT PAGE: QUICK SERVICES (3 Boxes)
+   ============================================= */
+.quick-services {
+    display: flex;
+    height: 450px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.service-box {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    color: var(--white);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+/* Hiệu ứng trượt rộng ra khi hover */
+.service-box:hover {
+    flex: 1.5;
+}
+
+.box-content {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s ease;
+}
+
+.service-box:hover .box-content {
+    transform: translateY(-10px);
+}
+
+.box-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+/* =============================================
+    COMPANY DETAIL SECTION
+   ============================================= */
+.company-detail {
+    padding: 100px 0;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255, 127, 80, 0.1);
+    color: var(--accent-coral);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.detail-text h2 {
+    font-size: 2.8rem;
+    color: var(--primary-blue);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.check-list {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.check-list li::before {
+    content: '⚓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-coral);
+}
+
+.check-list li:hover {
+    transform: translateX(10px);
+    color: var(--secondary-blue);
+}
+
+.img-frame {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 0px rgba(0, 51, 102, 0.05);
+    transition: var(--transition);
+}
+
+.img-frame:hover {
+    transform: scale(1.02);
+}
+/* --- HERO SLIDER (Kiểu dải băng) --- */
+.hero-window {
+    height: 85vh;
+    overflow: hidden; /* Quan trọng để ẩn phần slide bị thừa */
+    position: relative;
+    background: #000;
+}
+
+.hero-slider {
+    display: flex; /* Dùng flexbox để các slide nằm cạnh nhau */
+    width: 100%; /* Sẽ được JS điều chỉnh để chứa các slide clone */
+    height: 100%;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* Transition mượt mà */
+    /* Thêm perspective cho hiệu ứng 3D nhẹ nếu muốn */
+    /* perspective: 1000px; */ 
+}
+
+.slide {
+    flex-shrink: 0; /* Quan trọng: Ngăn slide bị co lại */
+    width: 100%; /* Mỗi slide chiếm 100% chiều rộng của .hero-window */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative; /* Cho lớp phủ gradient và nội dung */
+    /* Hiệu ứng 3D nhẹ khi trượt (tùy chọn) */
+    /* transform-style: preserve-3d; */
+}
+
+/* Lớp phủ gradient để chữ dễ đọc hơn */
+.slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative; /* Đặt trên lớp phủ */
+    z-index: 2;
+    max-width: 800px;
+}
+
+/* --- HIỆU ỨNG CHỮ (Professional Reveal) --- */
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    clip-path: inset(0 0 100% 0); /* Ẩn chữ bằng clip-path */
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateY(20px); /* Ẩn xuống dưới */
+    transition: all 1s ease-out;
+}
+
+.btn-primary {
+    opacity: 0;
+    transform: scale(0.8); /* Ẩn bằng scale */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Khi slide được active (bởi JS) thì chữ hiện ra */
+.slide.active-slide .hero-content h1 {
+    clip-path: inset(0 0 0 0);
+    transition-delay: 0.5s;
+}
+
+.slide.active-slide .hero-content p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s;
+}
+
+.slide.active-slide .btn-primary {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 1.5s;
+}
+
+/* --- Nút điều hướng (tùy chọn) --- */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 51, 102, 0.5); /* Nền xanh đậm trong suốt */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.slider-nav:hover {
+    background: var(--accent-coral);
+}
+
+.slider-nav.prev {
+    left: 20px;
+}
+
+.slider-nav.next {
+    right: 20px;
+}
+/* --- Buttons --- */
+.btn-primary {
+    background: var(--accent-coral);
+    color: var(--white);
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 127, 80, 0.3);
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 80px 0 30px;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.hotline-text {
+    font-weight: 700;
+    color: var(--accent-coral);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .quick-services {
+        flex-direction: column;
+        height: auto;
+    }
+    .service-box {
+        height: 250px;
+    }
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .detail-text h2 {
+        font-size: 2rem;
+    }
+}
+/* =============================================
+    SERVICES PAGE: SIGNATURE TOURS GRID
+   ============================================= */
+.services-section {
+    padding: 100px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
+}
+
+.service-img {
+    height: 250px;
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.1);
+}
+
+.service-info {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-info h3 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-info p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Meta info: Duration & Price */
+.tour-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.duration {
+    font-size: 0.85rem;
+    color: var(--secondary-blue);
+    font-weight: 600;
+}
+
+.price {
+    font-size: 1.1rem;
+    color: var(--accent-coral);
+    font-weight: 700;
+}
+
+.btn-small {
+    text-align: center;
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-small:hover {
+    background: var(--secondary-blue);
+}
+
+/* =============================================
+    EXTRA ACTIVITIES (Kayaking, Water Biking...)
+   ============================================= */
+.extra-activities {
+    background: #f0f7ff;
+    padding: 100px 0;
+}
+
+.extra-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.extra-card {
+    position: relative;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.extra-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s ease;
+}
+
+.extra-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 51, 102, 0.85), transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+    color: white;
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+.extra-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.extra-card h4 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Hiệu ứng khi hover vào card extra */
+.extra-card:hover .extra-img {
+    transform: scale(1.15);
+}
+
+.extra-card:hover .extra-overlay {
+    background: linear-gradient(to top, rgba(255, 127, 80, 0.9), transparent 80%);
+}
+
+/* =============================================
+    RESPONSIVE FOR SERVICES
+   ============================================= */
+@media (max-width: 992px) {
+    .extra-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid, .extra-grid {
+        grid-template-columns: 1fr;
+    }
+    .extra-card {
+        height: 300px;
+    }
+}
+/* =============================================
+    CONTACT PAGE SPECIFIC STYLES
+   ============================================= */
+.contact-page-wrapper {
+    padding: 100px 0;
+    background-color: #f8fbff;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* Info Side */
+.contact-info-card {
+    padding-right: 30px;
+}
+
+.contact-info-card .subtitle {
+    margin: -40px 0 40px 0; /* Căn chỉnh lại khoảng cách dưới title */
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.info-item-box {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.05);
+    transition: var(--transition);
+}
+
+.info-item-box:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.1);
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    background: rgba(0, 119, 190, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.info-item-box h4 {
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.map-preview {
+    margin-top: 30px;
+    height: 200px;
+    background: #e0e7ff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--secondary-blue);
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Form Side */
+.form-container-card {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0, 51, 102, 0.08);
+}
+
+.form-container-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary-blue);
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--secondary-blue);
+    outline: none;
+    background: #fdfdfd;
+}
+
+.submit-btn-modern {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.submit-btn-modern:hover {
+    background: var(--accent-coral);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 127, 80, 0.3);
+}
+
+/* =============================================
+    GLOBAL UPDATES (Sửa lỗi ảnh tối & Chữ trượt)
+   ============================================= */
+.slide {
+    /* Đảm bảo ảnh nền sáng hơn dù có gradient đè trực tiếp trong HTML */
+    filter: contrast(1.05) brightness(1.05);
+}
+
+.hero-content h1, .hero-content p {
+    /* Hiệu ứng chữ trượt từ từ lên trên */
+    animation: slideInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+.hero-content p {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+    RESPONSIVE
+   ============================================= */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-info-card {
+        padding-right: 0;
+        margin-bottom: 50px;
+    }
+}
